@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>שאלון העצמאות</title>
+</head>
+<body>
+    <h1>שאלון העצמאות</h1>
+    <form method="POST">
+        {% for question in questions %}
+            <p>{{ question }}</p>
+            <input type="radio" name="q{{ loop.index }}" value="1"> 1
+            <input type="radio" name="q{{ loop.index }}" value="2"> 2
+            <input type="radio" name="q{{ loop.index }}" value="3"> 3
+            <input type="radio" name="q{{ loop.index }}" value="4"> 4
+            <input type="radio" name="q{{ loop.index }}" value="5"> 5
+        {% endfor %}
+        <p>השלים: "עצמאות עבורי זה..."</p>
+        <textarea name="free_text"></textarea>
+        <button type="submit">שלח</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>סיכום הערכים</title>
+</head>
+<body>
+    <h1>🎯 סיכום הערכים שבחרת</h1>
+    <p>תודה, {{ name }}!</p>
+
+    <h2>🔟 דירוג הערכים שבחרת לפי סדר חשיבות:</h2>
+    <ol>
+        {% for value in ranked_selection %}
+            <li>{{ value }}</li>
+        {% endfor %}
+    </ol>
+
+    <p>📊 הנתונים נשמרו בהצלחה! תודה על השתתפותך!</p>
+</body>
+</html>

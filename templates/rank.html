@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דירוג ערכים - השוואות</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📊 השוואת ערכים - בחר את החשוב יותר</h1>
+
+    {% if pair %}
+        <h3>איזה ערך חשוב לך יותר?</h3>
+        <form method="POST">
+            <button type="submit" name="choice" value="{{ pair[0] }}">{{ pair[0] }}</button>
+            <button type="submit" name="choice" value="{{ pair[1] }}">{{ pair[1] }}</button>
+        </form>
+    {% else %}
+        <h3>🎯 הדירוג הושלם! הנתונים נשמרו.</h3>
+        <a href="{{ url_for('summary') }}">המשך לסיכום</a>
+    {% endif %}
+</body>
+</html>

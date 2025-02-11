@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תוצאות השאלון</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔹 תוצאות השאלון</h1>
+
+    <h3>🔹 הציונים שנתת לכל משפט:</h3>
+    <ul>
+        {% for question, response in responses.items() %}
+            <li>{{ question }}: {{ response }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>🔹 התשובה שלך לשאלה הפתוחה:</h3>
+    <p><strong>"עצמאות עבורי זה...":</strong> {{ free_text }}</p>
+
+    <br>
+    <a href="/">🔄 חזור לשאלון</a>
+</body>
+</html>

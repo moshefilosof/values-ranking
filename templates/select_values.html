@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>בחירת ערכים</title>
+</head>
+<body>
+    <h1>🔹 בחירת 10 הערכים החשובים לך</h1>
+    <form method="POST">
+        <p>הערכים שבחרת עד כה:</p>
+        <ul>
+            {% for value in selected_values %}
+                <li>{{ value }}</li>
+            {% endfor %}
+        </ul>
+        
+        {% if new_value %}
+            <h3>האם לשמור את הערך הבא?</h3>
+            <p>{{ new_value }}</p>
+            <button type="submit" name="action" value="add">✅ שמור</button>
+            <button type="submit" name="action" value="skip">❌ דלג</button>
+            
+            {% if selected_values %}
+                <p>או להחליף ערך:</p>
+                <select name="selected_value">
+                    {% for value in selected_values %}
+                        <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" name="action" value="replace">🔄 החלף</button>
+            {% endif %}
+        {% else %}
+            <p>✔ סיימת לבחור 10 ערכים!</p>
+            <a href="{{ url_for('rank_values') }}">המשך לדירוג הערכים</a>
+        {% endif %}
+    </form>
+</body>
+</html>

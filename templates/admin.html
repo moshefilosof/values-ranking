@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניתוח הצרכים</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔍 ניתוח הצרכים של המתאמן</h1>
+
+    <h3>10 הערכים שנבחרו:</h3>
+    <ul>
+        {% for value in ranked_selection %}
+            <li>{{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>🔹 סיכום הצרכים הבסיסיים:</h3>
+
+    {% for need, values in need_scores.items() %}
+        <h4>{{ need }} ({{ values|length }} ערכים)</h4>
+        <ul>
+            {% for value in values %}
+                <li>{{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    {% if unassigned_values %}
+        <h3>⚠ ערכים שלא שויכו לשום צורך:</h3>
+        <ul>
+            {% for value in unassigned_values %}
+                <li>{{ value }}</li>
+            {% endfor %}
+        </ul>
+        <p>🔹 כדאי להוסיף אותם ל-`needs_mapping` ב-`app.py`.</p>
+    {% endif %}
+
+    <p><strong>⚠ רק אתה יכול לראות את הנתונים האלה.</strong></p>
+</body>
+</html>
